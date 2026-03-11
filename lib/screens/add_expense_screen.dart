@@ -1,20 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../models/expense.dart';
 import '../providers/expenses_provider.dart';
 
 class AddExpenseScreen extends StatelessWidget {
+  final Expense? expense; // null = add mode, non-null = edit mode
 
-  final TextEditingController titleController = TextEditingController();
-  final TextEditingController amountController = TextEditingController();
+  final TextEditingController titleController;
+  final TextEditingController amountController;
 
-  AddExpenseScreen({super.key}); //
+  AddExpenseScreen({super.key, this.expense})
+      : titleController = TextEditingController(text: expense?.title ?? ''),
+        amountController = TextEditingController(
+            text: expense?.amount.toString() ?? '');
 
   @override
   Widget build(BuildContext context) {
+    final bool isEditing = expense != null;
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Add Expense"),
+        title: Text(isEditing ? "Edit Expense" : "Add Expense"),
       ),
 
       body: Padding(
@@ -42,17 +48,27 @@ class AddExpenseScreen extends StatelessWidget {
 
             ElevatedButton(
               onPressed: () {
+                final provider =
+                    Provider.of<ExpensesProvider>(context, listen: false); // This looks up ExpensesProvider and calls function using "listen."
 
-                Provider.of<ExpensesProvider>(context, listen: false)
-                    .addExpense(
-                  titleController.text,
-                  double.parse(amountController.text),
-                );
+                if (isEditing) {
+                  provider.editExpense(
+                    expense!.id,
+                    titleController.text,
+                    double.parse(amountController.text),
+                  );
+                } else {
+                  provider.addExpense(
+                    titleController.text,
+                    double.parse(amountController.text),
+                  );
+                }
 
                 Navigator.pop(context);
               },
-              child: Text("Save Expense"),
-            )
+              child: Text(isEditing ? "Save Changes" : "Save Expense"),
+            ),
+
           ],
         ),
       ),
