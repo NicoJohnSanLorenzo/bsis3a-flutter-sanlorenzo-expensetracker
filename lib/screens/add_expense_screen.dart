@@ -20,8 +20,18 @@ class AddExpenseScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(isEditing ? "Edit Expense" : "Add Expense"),
-      ),
+        title: Text(isEditing ? 
+          "Edit Expense" : "Add Expense", 
+          style: TextStyle(
+          fontWeight: FontWeight.w600,
+          fontSize: 22,
+          color: Color.fromARGB(225, 247, 245, 245) 
+          )
+        ),
+      elevation: 6,
+      shadowColor: Colors.black45,
+      backgroundColor: const Color.fromARGB(211, 41, 175, 50),
+    ),
 
       body: Padding(
         padding: EdgeInsets.all(20),
