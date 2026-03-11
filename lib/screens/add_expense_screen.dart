@@ -39,20 +39,40 @@ class AddExpenseScreen extends StatelessWidget {
         child: Column(
           children: [
 
-            TextField(
+        TextField(
               controller: titleController,
               decoration: InputDecoration(
-                labelText: "Expense Title",
-              ),
+              labelText: "Expense Title",
+              prefixIcon: Icon(Icons.receipt_long),
+              filled: true,
+              fillColor: Colors.grey.shade100,
+              border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12),
+              borderSide: BorderSide(
+                color: Color.fromARGB(211, 41, 175, 50),
+                width: 2,),
             ),
+          ),
+        ),
 
-            TextField(
+      SizedBox(height: 16),
+
+        TextField(
               controller: amountController,
-              decoration: InputDecoration(
-                labelText: "Amount",
-              ),
               keyboardType: TextInputType.number,
+              decoration: InputDecoration(
+              labelText: "Amount",
+              prefixIcon: Icon(Icons.payments),
+              filled: true,
+              fillColor: Colors.grey.shade100,
+              border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12),
+              borderSide: BorderSide(
+                color: Color.fromARGB(211, 41, 175, 50),
+                width: 2,),
             ),
+          ),
+        ),
 
             SizedBox(height: 20),
 
