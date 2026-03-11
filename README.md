@@ -1,16 +1,48 @@
-# flutter_expensetrackerapp_sanlorenzo
+# Expense Tracker Application using Flutter
 
-A new Flutter project.
+A simple and lightweight Expense Tracker mobile application built with Flutter.
+This application allows users to record, edit, and manage their daily expenses in a clean and minimal interface.
 
-## Getting Started
+The design is intentionally modest and simplistic, making it ideal for personal use. It focuses on usability and clarity rather than complex features.
 
-This project is a starting point for a Flutter application.
+## Overview
 
-A few resources to get you started if this is your first Flutter project:
+The Expense Tracker helps users keep track of their spending by allowing them to:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- View recorded expenses
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Add new expenses
+
+- Edit existing expenses
+
+- Delete expenses
+
+The application uses Flutter's UI framework together with Provider state management to update the interface dynamically whenever the data changes.
+
+## Application Design
+
+The user interface follows a minimal and straightforward design philosophy:
+
+- Clean layout
+
+- Simple navigation
+
+- Easy-to-read expense list
+
+- Quick access to add, edit, and delete actions
+
+This makes the app suitable for users who want a quick and uncomplicated way to track personal expenses.
+
+## State Management
+
+The application uses the following components for state management:
+
+- Provider package – A lightweight and efficient solution for managing and sharing application state.
+
+- ChangeNotifier – A class used to store and manage the expense data while notifying listeners when changes occur.
+
+- Consumer – A widget that listens to the provider and rebuilds the UI whenever the state updates.
+
+## Author
+
+San Lorenzo, Nico John | IS3A 
