@@ -32,40 +32,69 @@ class HomeScreen extends StatelessWidget {
             itemBuilder: (context, index) {
               var expense = expenses[index];
 
-              return ListTile(
-                title: Text(expense.title),
-                subtitle: Text("₱${expense.amount}"),
+          return Card(
+            elevation: 3,
+            margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+            shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
 
-                trailing: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
+      child: ListTile(
+        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
 
-                    // Edit button (Pencil Icon)
-                    IconButton(
-                      icon: Icon(Icons.edit),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => AddExpenseScreen(
-                              expense: expense,
-                            ),
-                          ),
-                        );
-                      },
-                    ),
+        leading: CircleAvatar(
+          backgroundColor: const Color.fromARGB(211, 41, 175, 50),
+          child: const Icon(
+          Icons.attach_money,
+          color: Colors.white,
+        ),
+      ),
 
-                    // Delete button (Trashbin Icon)
-                    IconButton(
-                      icon: Icon(Icons.delete),
-                      onPressed: () {
-                        provider.deleteExpense(expense.id);
-                      },
-                    ),
+        title: Text(
+          expense.title,
+          style: const TextStyle(
+          fontWeight: FontWeight.w600,
+          fontSize: 16,
+        ),
+      ),
 
-                  ],
+        subtitle: Text(
+          "₱${expense.amount}",
+          style: const TextStyle(
+          fontSize: 14,
+          color: Colors.grey,
+        ),
+      ),
+
+    trailing: Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+
+        IconButton(
+          icon: const Icon(Icons.edit, color: Colors.blue),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => AddExpenseScreen(
+                  expense: expense,
                 ),
-              );
+              ),
+            );
+          },
+        ),
+
+        IconButton(
+          icon: const Icon(Icons.delete, color: Colors.red),
+          onPressed: () {
+            provider.deleteExpense(expense.id);
+          },
+        ),
+
+      ],
+    ),
+  ),
+);
             },
           );
         },
