@@ -10,12 +10,22 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Expenses"),
+      title: const Text(
+          "Expense Tracker",
+          style: TextStyle(
+          fontWeight: FontWeight.w600,
+          fontSize: 22,
+          color: Color.fromARGB(225, 247, 245, 245)
+        ),
       ),
+    elevation: 6,
+    shadowColor: Colors.black45,
+    backgroundColor: const Color.fromARGB(211, 41, 175, 50),
+),
 
-      body: Consumer<ExpensesProvider>(
-        builder: (context, provider, child) {
-          var expenses = provider.expenses;
+      body: Consumer<ExpensesProvider>( // This looks up widget tree for an instance of "ExpensesProvider."
+        builder: (context, provider, child) { // This is a callback function that runs whenever data changes in "ExpensesProvider."
+          var expenses = provider.expenses; // This extracts a specific list or propety called expenses from the provider to build the UI.
 
           return ListView.builder(
             itemCount: expenses.length,

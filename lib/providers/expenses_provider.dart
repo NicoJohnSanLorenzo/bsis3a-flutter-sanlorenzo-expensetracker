@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../models/expense.dart';
 
-class ExpensesProvider with ChangeNotifier {
+class ExpensesProvider with ChangeNotifier { // This creates a class that can "broadcast" updates, notifying the UI to rebuild.
 
   final List<Expense> _expenses = [ //
     Expense(id: "1", title: "Lunch", amount: 120),
@@ -19,7 +19,7 @@ class ExpensesProvider with ChangeNotifier {
         amount: amount,
       ),
     );
-    notifyListeners();
+    notifyListeners(); // This triggers the "ChangeNotifier."
   }
 
   // READ
